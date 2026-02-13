@@ -1,4 +1,4 @@
-import { TrendingUp, Smartphone, Coffee, Moon, Smile, CheckCircle2 } from 'lucide-react';
+import { Smartphone, Coffee, Moon, Smile, BookOpen, Dumbbell, Brain, Users } from 'lucide-react';
 
 const tips = [
     {
@@ -21,28 +21,29 @@ const tips = [
         title: 'Latihan Bersyukur',
         description: 'Tulis 3 hal yang kamu syukuri hari ini. Simpel, tapi ampuh banget buat naikin mood positif.',
     },
+    {
+        icon: BookOpen,
+        title: 'Journaling',
+        description: 'Coba tulis perasaan kamu di jurnal tiap hari. Nggak perlu panjang, 5 menit aja udah cukup buat ngeluarin uneg-uneg.',
+    },
+    {
+        icon: Dumbbell,
+        title: 'Olahraga Ringan',
+        description: 'Jalan kaki 15 menit atau stretching ringan bisa bantu ngeluarin endorfin. Mood langsung naik tanpa perlu nge-gym berat.',
+    },
+    {
+        icon: Brain,
+        title: 'Batasi Multitasking',
+        description: 'Fokus satu hal dulu, baru lanjut ke yang lain. Multitasking justru bikin otak capek dan produktivitas turun.',
+    },
+    {
+        icon: Users,
+        title: 'Quality Time',
+        description: 'Luangkan waktu buat ngobrol sama teman atau keluarga. Koneksi sosial itu penting banget buat kesehatan mental.',
+    },
 ];
 
-const articles = [
-    {
-        category: 'Self-Care',
-        title: 'Cara Mengatasi FOMO (Fear of Missing Out) di Medsos',
-        excerpt: 'Merasa tertinggal lihat postingan teman? Yuk belajar cara bodo amat yang sehat.',
-        readTime: '3 menit',
-    },
-    {
-        category: 'Productivity',
-        title: 'Teknik Pomodoro: Belajar Fokus Tanpa Burnout',
-        excerpt: 'Metode belajar 25 menit fokus + 5 menit istirahat yang cocok banget buat sistem kebut semalam.',
-        readTime: '4 menit',
-    },
-    {
-        category: 'Mental Health',
-        title: 'Mengenal Tanda-Tanda "High Functioning Anxiety"',
-        excerpt: 'Kelihatan berprestasi tapi dalamnya rapuh? Bisa jadi kamu mengalaminya.',
-        readTime: '5 menit',
-    },
-];
+
 
 export default function HealthInfo() {
     return (
@@ -60,7 +61,7 @@ export default function HealthInfo() {
                 </div>
 
                 {/* Health Tips */}
-                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     {tips.map((tip) => {
                         const Icon = tip.icon;
                         return (
@@ -78,37 +79,6 @@ export default function HealthInfo() {
                     })}
                 </div>
 
-                {/* Articles */}
-                <div className="max-w-4xl mx-auto">
-                    <h3 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
-                        <TrendingUp size={20} className="text-primary-600" />
-                        Artikel Trending Minggu Ini
-                    </h3>
-                    <div className="space-y-4">
-                        {articles.map((article) => (
-                            <div
-                                key={article.title}
-                                className="bg-white rounded-2xl p-6 border border-slate-100 hover:border-primary-200 hover:shadow-md transition-all duration-300 cursor-pointer group"
-                            >
-                                <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-                                    <div className="flex-1">
-                                        <div className="flex items-center gap-3 mb-2">
-                                            <span className="text-xs font-semibold text-primary-600 bg-primary-50 px-2.5 py-1 rounded-full">
-                                                {article.category}
-                                            </span>
-                                            <span className="text-xs text-slate-400">{article.readTime} baca</span>
-                                        </div>
-                                        <h4 className="font-bold text-slate-800 group-hover:text-primary-700 transition-colors">
-                                            {article.title}
-                                        </h4>
-                                        <p className="mt-1 text-sm text-slate-500">{article.excerpt}</p>
-                                    </div>
-                                    <CheckCircle2 size={20} className="text-primary-400 hidden sm:block flex-shrink-0" />
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
             </div>
         </section>
     );

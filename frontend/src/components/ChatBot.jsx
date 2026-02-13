@@ -223,7 +223,7 @@ export default function ChatBot() {
             {/* Tooltip (visible when closed) */}
             {!isOpen && (
                 <div className="fixed bottom-[5.5rem] right-4 sm:right-6 z-50 bg-slate-800 text-white text-xs font-medium px-3 py-1.5 rounded-lg shadow-lg animate-bounce pointer-events-none">
-                    Curhat dengan AI 💬
+                    Curhat dengan Dokter Z 💬
                     <div className="absolute -bottom-1 right-5 w-2 h-2 bg-slate-800 rotate-45" />
                 </div>
             )}
