@@ -95,11 +95,11 @@ export default function Hero() {
                                 </div>
 
                                 {/* Floating Elements */}
-                                <div className="absolute -right-6 top-1/2 p-3 bg-slate-800 rounded-2xl border border-white/10 shadow-xl animate-bounce duration-[3000ms]">
+                                <div className="absolute -right-6 top-1/2 p-3 bg-slate-800 rounded-2xl border border-white/10 shadow-xl animate-bounce duration-[10000ms]">
                                     <span className="text-2xl">🔋</span>
                                 </div>
-                                <div className="absolute -left-6 bottom-10 p-3 bg-slate-800 rounded-2xl border border-white/10 shadow-xl animate-bounce duration-[4000ms]">
-                                    <span className="text-2xl">✨</span>
+                                <div className="absolute -left-6 bottom-10 p-3 bg-slate-800 rounded-2xl border border-white/10 shadow-xl animate-bounce duration-[10000ms]">
+                                    <span className="text-2xl">💖</span>
                                 </div>
                             </div>
 
