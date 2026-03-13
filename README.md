@@ -2,7 +2,7 @@
 
 <img src="images/logo.png" alt="Dokter Z Hero" width="300" />
 
-[**🌐 LIVE DEMO**](https://dokterz.ahdx.dev)
+[**🌐 LIVE DEMO**](https://dokterz.net)
 
 **Dokter Z** adalah teman curhat virtual berbasis AI yang dirancang khusus untuk Generasi Z. Dibalut dengan persona yang santai, empatik, dan "ngerti banget" bahasa anak muda, Dokter Z hadir untuk menemani di saat *burnout*, *overthinking*, atau sekadar butuh teman ngobrol tanpa takut di-*judge*.
 
