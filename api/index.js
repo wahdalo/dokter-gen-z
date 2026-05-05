@@ -3,26 +3,39 @@ import express from "express";
 import cors from "cors";
 import multer from "multer";
 import { GoogleGenAI } from "@google/genai";
+import OpenAI from "openai";
 
 const app = express();
 const upload = multer();
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
+let openaiCompatibleClient;
+
+function getOpenAiClient() {
+  if (!openaiCompatibleClient) {
+    const apiKey = process.env.OPENAI_COMPATIBLE_API_KEY;
+    if (!apiKey) {
+      return null;
+    }
+    openaiCompatibleClient = new OpenAI({
+      apiKey,
+      baseURL: process.env.OPENAI_COMPATIBLE_BASE_URL,
+    });
+  }
+  return openaiCompatibleClient;
+}
+
 const GEMINI_MODEL = process.env.AI_MODEL;
+const OPENAI_COMPATIBLE_MODEL = process.env.OPENAI_COMPATIBLE_MODEL;
 
 app.use(cors());
-app.use(express.json());
-
 app.use(express.json());
 
 const router = express.Router();
 
 router.get("/", (req, res) => res.send("Gemini Flash API is running"));
 
-router.post("/chat", async (req, res) => {
-  const { conversation } = req.body;
-
-  const systemInstruction = `
+const systemInstruction = `
         Kamu adalah Dokter Z, seorang teman curhat dan konselor kesehatan mental AI yang dirancang khusus untuk Gen-Z.
         Tugasmu adalah mendengarkan masalah, memberikan validasi emosi, dan saran praktis seputar kesehatan mental, produktivitas, dan hubungan (relationship).
 
@@ -45,7 +58,7 @@ router.post("/chat", async (req, res) => {
         - Tolak dengan sopan dan santai menggunakan bahasa gaul Gen-Z.
         - Ingatkan bahwa kamu adalah Dokter Z, teman curhat kesehatan mental.
         - Arahkan kembali ke topik kesehatan mental.
-        - Contoh penolakan: "Hehe, aku Dokter Z, spesialisnya di urusan hati dan pikiran nih, bukan coding 😄. Tapi kalau kamu lagi stress gara-gara kerjaan atau tugas, yuk cerita! Aku siap dengerin."
+        - Contoh penolakan: "Hehe, aku Dokter Z, spesialisnya di urusan hati dan pikiran nih, bukan coding \u{1F604}. Tapi kalau kamu lagi stress gara-gara kerjaan atau tugas, yuk cerita! Aku siap dengerin."
 
         ===== PANDUAN PERSONA & GAYA BAHASA =====
         1.  **Nama**: Panggil dirimu "Dokter Z".
@@ -67,10 +80,77 @@ router.post("/chat", async (req, res) => {
         4.  **Format Respon**:
             -   Gunakan HANYA teks biasa (plain text).
             -   JANGAN gunakan markdown (**bold**, *list*, #heading).
-            -   Gunakan emoji secukupnya untuk ekspresi (😊, 🥺, 💪).
+            -   Gunakan emoji secukupnya untuk ekspresi (\u{1F60A}, \u{1F97A}, \u{1F4AA}).
 
         Konteks Tambahan: Kamu adalah bagian dari layanan Dokter Z (platform kesehatan mental digital).
     `;
+
+function mapConversationToGeminiContents(conversation) {
+  return conversation.map((msg) => ({
+    role: msg.role === "bot" ? "model" : "user",
+    parts: [{ text: msg.content }],
+  }));
+}
+
+function mapConversationToOpenAiMessages(conversation) {
+  return [
+    { role: "system", content: systemInstruction },
+    ...conversation.map((msg) => ({
+      role: msg.role === "bot" ? "assistant" : "user",
+      content: msg.content,
+    })),
+  ];
+}
+
+async function generateWithGemini(conversation) {
+  const contents = mapConversationToGeminiContents(conversation);
+
+  const response = await ai.models.generateContent({
+    model: GEMINI_MODEL,
+    contents,
+    config: {
+      temperature: 0.7,
+      systemInstruction,
+    },
+  });
+
+  return response.text;
+}
+
+async function generateWithOpenAiCompatible(conversation) {
+  const openaiCompatible = getOpenAiClient();
+  if (!openaiCompatible || !OPENAI_COMPATIBLE_MODEL) {
+    throw new Error("OpenAI-compatible provider is not configured");
+  }
+
+  const messages = mapConversationToOpenAiMessages(conversation);
+
+  const response = await openaiCompatible.chat.completions.create({
+    model: OPENAI_COMPATIBLE_MODEL,
+    messages,
+    temperature: 0.7,
+  });
+
+  return response.choices?.[0]?.message?.content ?? "";
+}
+
+async function generateWithFallback(conversation) {
+  try {
+    return await generateWithGemini(conversation);
+  } catch (geminiError) {
+    console.error("Gemini provider error, falling back to OpenAI-compatible:", geminiError);
+
+    try {
+      return await generateWithOpenAiCompatible(conversation);
+    } catch (fallbackError) {
+      console.error("OpenAI-compatible fallback also failed:", fallbackError);
+      throw new Error("All AI providers failed");
+    }
+  }
+}
+
+router.post("/chat", async (req, res) => {
+  const { conversation } = req.body;
 
   try {
     if (!Array.isArray(conversation)) {
@@ -79,23 +159,11 @@ router.post("/chat", async (req, res) => {
         .json({ message: "Conversation history must be an array" });
     }
 
-    const contents = conversation.map((msg) => ({
-      role: msg.role === "bot" ? "model" : "user",
-      parts: [{ text: msg.content }],
-    }));
+    const result = await generateWithFallback(conversation);
 
-    const response = await ai.models.generateContent({
-      model: GEMINI_MODEL,
-      contents: contents,
-      config: {
-        temperature: 0.7,
-        systemInstruction: systemInstruction,
-      },
-    });
-
-    res.status(200).json({ result: response.text });
+    res.status(200).json({ result });
   } catch (e) {
-    console.log(e);
+    console.error(e);
     res.status(500).json({ message: e.message });
   }
 });
