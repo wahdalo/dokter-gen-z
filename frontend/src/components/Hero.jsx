@@ -1,7 +1,7 @@
 import { Heart, ArrowRight } from 'lucide-react';
 import { MessageCircle } from 'lucide-react';
 
-export default function Hero() {
+export default function Hero({ onOpenChat }) {
     return (
         <section id="beranda" className="relative bg-slate-900 pt-28 pb-20 lg:pt-36 lg:pb-32 overflow-hidden items-center -mb-1">
             {/* Background Effects */}
@@ -38,7 +38,7 @@ export default function Hero() {
 
                         <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                             <button
-                                onClick={() => document.getElementById('chatbot-toggle')?.click()}
+                                onClick={onOpenChat}
                                 className="px-8 py-4 bg-primary-500 hover:bg-primary-600 text-white rounded-2xl font-semibold transition-all shadow-lg shadow-primary-500/30 flex items-center justify-center gap-2 group"
                             >
                                 Curhat Sekarang
@@ -50,18 +50,42 @@ export default function Hero() {
                             </a>
                         </div>
 
-                        <div className="mt-10 grid grid-cols-3 gap-6 border-t border-white/10 pt-8 max-w-md mx-auto lg:mx-0">
+                        <div className="mt-10 grid grid-cols-3 gap-6 border-t border-white/10 pt-8 max-w-md mx-auto lg:mx-0 reveal">
                             <div>
-                                <div className="text-2xl font-bold text-white mb-1">24/7</div>
-                                <div className="text-xs text-slate-400">Selalu Ada</div>
+                                <div className="text-2xl font-bold text-white mb-1">Anonim</div>
+                                <div className="text-xs text-slate-400">Privasi Terjaga</div>
                             </div>
                             <div>
-                                <div className="text-2xl font-bold text-white mb-1">Privasi</div>
-                                <div className="text-xs text-slate-400">Dijamin Aman</div>
+                                <div className="text-2xl font-bold text-white mb-1">Bebas</div>
+                                <div className="text-xs text-slate-400">Sesuai Hatimu</div>
                             </div>
                             <div>
                                 <div className="text-2xl font-bold text-white mb-1">Gratis</div>
                                 <div className="text-xs text-slate-400">Selamanya</div>
+                            </div>
+                        </div>
+
+                        {/* Mobile Mini Chat Card */}
+                        <div className="lg:hidden mt-8 reveal reveal-delay-2">
+                            <div className="bg-slate-800/60 backdrop-blur border border-white/10 rounded-2xl p-4 shadow-lg">
+                                <div className="flex items-center gap-3 mb-3">
+                                    <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-emerald-500 rounded-xl flex items-center justify-center">
+                                        <Heart size={20} className="text-white" />
+                                    </div>
+                                    <div>
+                                        <p className="text-white font-semibold text-sm">Dokter Z</p>
+                                        <div className="flex items-center gap-1.5">
+                                            <span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+                                            <p className="text-slate-400 text-xs">Online</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="bg-white/5 rounded-xl p-3 rounded-tr-none border border-white/5 max-w-[85%] mb-2">
+                                    <p className="text-slate-200 text-xs">"Dok, aku capek banget sama tugas..."</p>
+                                </div>
+                                <div className="bg-primary-600/20 rounded-xl p-3 rounded-tl-none border border-primary-500/20 max-w-[85%] ml-auto">
+                                    <p className="text-primary-200 text-xs font-medium">"It's okay to be tired, bestie. Kamu hebat! 💪"</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -112,9 +136,9 @@ export default function Hero() {
             </div>
 
             {/* Bottom wave */}
-            <div className="absolute bottom-0 left-0 right-0">
+            <div className="absolute bottom-0 left-0 right-0 text-white dark:text-slate-900">
                 <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-[40px] md:h-[60px]">
-                    <path d="M0 60L48 55C96 50 192 40 288 35C384 30 480 30 576 33.3C672 36.7 768 43.3 864 45C960 46.7 1056 43.3 1152 40C1248 36.7 1344 33.3 1392 31.7L1440 30V60H1392C1344 60 1248 60 1152 60C1056 60 960 60 864 60C768 60 672 60 576 60C480 60 384 60 288 60C192 60 96 60 48 60H0Z" fill="white" />
+                    <path d="M0 60L48 55C96 50 192 40 288 35C384 30 480 30 576 33.3C672 36.7 768 43.3 864 45C960 46.7 1056 43.3 1152 40C1248 36.7 1344 33.3 1392 31.7L1440 30V60H1392C1344 60 1248 60 1152 60C1056 60 960 60 864 60C768 60 672 60 576 60C480 60 384 60 288 60C192 60 96 60 48 60H0Z" className="fill-current" />
                 </svg>
             </div>
         </section>

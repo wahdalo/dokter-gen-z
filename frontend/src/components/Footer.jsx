@@ -2,7 +2,7 @@ import { Facebook, Twitter, Instagram, Mail, Phone, MapPin, Heart } from 'lucide
 
 export default function Footer() {
     return (
-        <footer id="kontak" className="bg-slate-900 text-slate-300 py-12 border-t border-slate-800">
+        <footer id="kontak" className="bg-slate-900 dark:bg-slate-950 text-slate-300 py-12 border-t border-slate-800 dark:border-slate-800">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col lg:flex-row justify-between gap-8 mb-12">
                     {/* Brand */}
@@ -17,13 +17,14 @@ export default function Footer() {
                         </p>
                         <div className="flex gap-4">
                             {[Facebook, Twitter, Instagram].map((Icon, i) => (
-                                <a
+                                <span
                                     key={i}
-                                    href="#"
-                                    className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-primary-600 hover:text-white transition-all duration-300"
+                                    className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-500 cursor-not-allowed"
+                                    aria-label="Media sosial segera hadir"
+                                    title="Media sosial segera hadir"
                                 >
                                     <Icon size={18} />
-                                </a>
+                                </span>
                             ))}
                         </div>
                     </div>
