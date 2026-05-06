@@ -6,6 +6,7 @@ const navLinks = [
   { label: "Curhat", href: "#services" },
   { label: "Tips", href: "#info-kesehatan" },
   { label: "Profil", href: "#about" },
+  { label: "FAQ", href: "#faq" }
 ];
 
 export default function Header({ theme, onToggleTheme, onOpenChat }) {
@@ -34,6 +35,8 @@ export default function Header({ theme, onToggleTheme, onOpenChat }) {
             <img
               src="/logo.webp"
               alt="Logo Dokter Z"
+              width="40"
+              height="40"
               className="w-10 h-10 object-contain"
             />
             <h1 className="text-xl font-bold text-primary-600">Dokter Z</h1>

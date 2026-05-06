@@ -79,7 +79,7 @@ export default function Services() {
                         </div>
                         <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">Ruang Aman</h3>
                         <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-                            Cerita apa aja tanpa takut dihakimi. Privasi kamu adalah prioritas nomor satu Dokter Z.
+                            Cerita apa aja tanpa takut dihakimi. Dokter Z dirancang buat ruang cerita yang nyaman dan minim data pribadi.
                         </p>
                     </div>
                 </div>

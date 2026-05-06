@@ -50,8 +50,8 @@ export default function About() {
                             Makanya Dokter Z hadir.
                         </p>
                         <p className="mt-4 text-slate-500 dark:text-slate-400 leading-relaxed">
-                            Kami menggabungkan kecerdasan buatan dengan pendekatan psikologi yang hangat dan manusiawi.
-                            Tujuannya satu: mastiin kamu punya tempat aman buat cerita kapanpun kamu butuh, tanpa takut dihakimi,
+                            Kami menggabungkan kecerdasan buatan dengan pendekatan percakapan suportif yang hangat dan manusiawi.
+                            Tujuannya satu: mastiin kamu punya tempat nyaman buat cerita kapanpun kamu butuh, tanpa takut dihakimi,
                             tanpa ribet, dan gratis.
                         </p>
 
@@ -59,7 +59,7 @@ export default function About() {
                         <div className="mt-8 grid grid-cols-2 gap-4">
                             {[
                                 { num: '24 Jam', label: 'Standby Terus' },
-                                { num: 'Privasi', label: 'Dijamin Aman' },
+                                { num: 'Anonim', label: 'Minim Identitas' },
                                 { num: 'Gratis', label: 'Selamanya' },
                                 { num: 'Gen-Z', label: 'Friendly Mode' },
                             ].map((item) => (

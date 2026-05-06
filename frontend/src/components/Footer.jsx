@@ -8,7 +8,7 @@ export default function Footer() {
                     {/* Brand */}
                     <div>
                         <div className="flex items-center gap-2 mb-6">
-                            <img src="/logo.webp" alt="Dokter Z" className="w-10 h-10 object-contain" />
+                            <img src="/logo.webp" alt="Dokter Z" width="40" height="40" className="w-10 h-10 object-contain" />
                             <span className="text-xl font-bold text-white">Dokter Z</span>
                         </div>
                         <p className="text-sm leading-relaxed mb-6 text-slate-400 max-w-xs">
@@ -52,6 +52,11 @@ export default function Footer() {
                                 <li>
                                     <a href="#about" className="hover:text-primary-400 transition-colors">
                                         Kenalan Dulu
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#faq" className="hover:text-primary-400 transition-colors">
+                                        FAQ
                                     </a>
                                 </li>
                             </ul>

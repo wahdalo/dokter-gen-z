@@ -1,0 +1,25 @@
+{
+  "name": "Dokter Z - Teman Curhat Mental Health Gen-Z",
+  "short_name": "Dokter Z",
+  "description": "Teman curhat AI gratis, anonim, dan non-judgmental untuk Gen-Z Indonesia.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#16a34a",
+  "lang": "id-ID",
+  "icons": [
+    {
+      "src": "/logo.webp",
+      "sizes": "192x192",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.webp",
+      "sizes": "512x512",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    }
+  ]
+}

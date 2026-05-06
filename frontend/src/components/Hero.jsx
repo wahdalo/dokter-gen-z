@@ -53,7 +53,7 @@ export default function Hero({ onOpenChat }) {
                         <div className="mt-10 grid grid-cols-3 gap-6 border-t border-white/10 pt-8 max-w-md mx-auto lg:mx-0 reveal">
                             <div>
                                 <div className="text-2xl font-bold text-white mb-1">Anonim</div>
-                                <div className="text-xs text-slate-400">Privasi Terjaga</div>
+                                <div className="text-xs text-slate-400">Cerita Tanpa Identitas</div>
                             </div>
                             <div>
                                 <div className="text-2xl font-bold text-white mb-1">Bebas</div>

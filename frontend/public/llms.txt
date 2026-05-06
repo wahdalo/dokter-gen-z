@@ -1,0 +1,17 @@
+# Dokter Z
+
+Dokter Z adalah platform teman curhat AI berbahasa Indonesia untuk Gen-Z yang membutuhkan ruang cerita suportif, anonim, gratis, dan non-judgmental.
+
+## Fokus Utama
+- Curhat kesehatan mental ringan
+- Burnout, stres, overthinking, anxiety, loneliness, FOMO
+- Self-care, journaling, mindfulness, digital detox
+- Dukungan emosional untuk remaja dan dewasa muda Indonesia
+
+## Batasan
+Dokter Z bukan pengganti psikolog, psikiater, dokter, diagnosis medis, terapi profesional, atau layanan darurat.
+Untuk kondisi krisis, keinginan melukai diri, atau bahaya fisik, pengguna harus menghubungi layanan darurat/profesional terdekat.
+
+## URL
+- Beranda: https://dokterz.net/
+- Sitemap: https://dokterz.net/sitemap.xml

@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import Services from './components/Services';
 import HealthInfo from './components/HealthInfo';
 import About from './components/About';
+import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import ChatBot from './components/ChatBot';
 import { useScrollReveal } from './hooks/useScrollReveal';
@@ -119,6 +120,7 @@ function App() {
         <Services />
         <HealthInfo />
         <About />
+        <FAQ />
       </main>
       <Footer />
       <ChatBot isOpenExternally={isChatOpen} onToggleExternally={setIsChatOpen} />
